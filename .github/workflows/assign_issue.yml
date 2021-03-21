@@ -5,6 +5,7 @@ on:
     types: [opened, labeled]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL_FOR_ISSUE }}
 
 jobs:
   assign_one_project:
