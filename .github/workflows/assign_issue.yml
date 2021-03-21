@@ -6,6 +6,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL_FOR_ISSUE }}
+  SLACK_MESSAGE: 'https://github.com/hgaiji/GithubActions/projects/1'
 
 jobs:
   assign_one_project:
