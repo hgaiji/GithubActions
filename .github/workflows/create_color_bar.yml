@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: ffmpeg command in docker container
       run: |
-        docker run -v $(pwd):$(pwd) -w $(pwd) -it --rm jrottenberg/ffmpeg:3.2-alpine -f lavfi -i smptehdbars=1920x1080:d=10 -f lavfi -i sine=frequency=1000:d=10 output.mp4
+        docker run -v $(pwd):$(pwd) -w $(pwd) -t --rm jrottenberg/ffmpeg:3.2-alpine -f lavfi -i smptehdbars=1920x1080:d=10 -f lavfi -i sine=frequency=1000:d=10 output.mp4
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
