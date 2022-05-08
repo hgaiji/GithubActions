@@ -1,10 +1,5 @@
 name: Create Git Tag
 
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   create_git_tag:
     runs-on: ubuntu-latest
