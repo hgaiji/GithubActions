@@ -29,6 +29,6 @@ jobs:
       - name: Push docker image to GitHub Container Registry
         run: | 
             IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/heads/release/v##g")
-            IMAGE_TAG_WITH_CR=$CR_HOST/$CR_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
+            IMAGE_TAG_WITH_CR=${CR_HOST}/${CR_USERNAME,,}/${DOCKER_IMAGE_NAME}:$IMAGE_TAG
             docker tag $DOCKER_IMAGE_NAME $IMAGE_TAG_WITH_CR
             docker push $IMAGE_TAG_WITH_CR
