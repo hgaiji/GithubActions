@@ -6,7 +6,7 @@ env: # global環境変数を設定
   CR_HOST: ${{ secrets.CR_HOST }}
   CR_USERNAME: ${{ github.repository_owner }}
   CR_PASSWORD: ${{ secrets.CR_PAT }}
-  CONTAINER_IMAGE_NAME: $CR_HOST/$CR_USERNAME/$DOCKER_IMAGE_NAME
+  CONTAINER_IMAGE_NAME: ${{ env.CR_HOST }}/${{ env.CR_USERNAME }}/${{ env.DOCKER_IMAGE_NAME }}
 
 jobs:
   push_docker_image:
@@ -24,9 +24,9 @@ jobs:
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
-          registry: ${{ secrets.CR_HOST }}
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
+          registry: ${{ env.CR_HOST }}
+          username: ${{ env.CR_USERNAME }}
+          password: ${{ env.CR_PASSWORD }}
       - name: Push docker image to GitHub Container Registry
         run: | 
             IMAGE_TAG=$(echo ${{ github.ref }} | sed -e "s#refs/heads/release/v##g")
