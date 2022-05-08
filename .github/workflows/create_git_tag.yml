@@ -1,10 +1,11 @@
 name: Create Git Tag
 
 on:
-  push:
+  pull_request:
     branches:
-      - master
-
+      - main
+    types: [closed]
+    
 jobs:
   create_git_tag:
     runs-on: ubuntu-latest
