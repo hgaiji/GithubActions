@@ -18,7 +18,9 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - name: Build docker image
-        run: docker build -t $DOCKER_IMAGE_NAME -f ./Dockerfile . 
+        run: |
+          docker build -t $DOCKER_IMAGE_NAME -f ./Dockerfile . 
+          echo "cr_host: ${CR_HOST}"
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
