@@ -13,15 +13,15 @@ jobs:
       - run: exit 1
       - name: success
         uses: sarisia/actions-status-discord@v1
-          if: success()
-          with:
-            webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        if: success()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
       - name: failure
         uses: sarisia/actions-status-discord@v1
-          if: failure()
-          with:
-            webhook: ${{ secrets.DISCORD_WEBHOOK }}
-            description: "Batch Failure!!"
-            color: 0xff91a4
+        if: failure()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: "Batch Failure!!"
+          color: 0xff91a4
 
 
