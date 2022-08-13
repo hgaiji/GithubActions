@@ -1,7 +1,7 @@
+# 参考: https://github.com/sarisia/actions-status-discord
 name: Send Message To Slack
 
 on: push
-
 jobs:
   send_messages:
     runs-on: ubuntu-latest
@@ -10,3 +10,18 @@ jobs:
         if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      - run: exit 1
+      - name: success
+        uses: sarisia/actions-status-discord@v1
+          if: success()
+          with:
+            webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: failure
+        uses: sarisia/actions-status-discord@v1
+          if: failure()
+          with:
+            webhook: ${{ secrets.DISCORD_WEBHOOK }}
+            description: "Batch Failure!!"
+            color: 0xff91a4
+
+
